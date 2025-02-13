@@ -1,0 +1,53 @@
+
+// No kotlin precisamos especificar os tipos de parametros 
+// de entrada em uma função
+fun calcCompCircuferencia(pi: Double, r: Double): Double{
+    return 2 * pi * r
+    // cast in cpp: 
+    // float num = 3.14.15
+    // int x1 = (int) num;
+}
+
+fun main5(){
+    val pi = 3.1415
+    val r = 10
+    val comp = calcCompCircuferencia(pi, r)
+    println(comp)
+}
+
+fun main4(){
+    var nome: String = "João"
+    
+	var sucesso: boolean
+    sucesso = true
+	
+    // Tipo any permite o polimorfismo de TIPOS em Kotlin 
+    // ou seja, uma var do tipo pode ser atribuída com múltiplos tipos:
+	var xpto: Any
+    xpto = "string"
+    xpto = 2.31
+    xpto = true
+}
+
+fun main3(){
+    // Uma vez declarada uma variável sem definir explicitamente o tipo
+    // e atribuir um valor o kotlin por INFERÊNCIA define qual o tipo daquela variável.
+    var nome = "Jotalhao"
+    // lOGO ISSO DA ERRADO: 
+    nome = true
+}
+
+fun main2(){
+    val pi = 3.1415
+}
+
+// Perguntar o que é JVM?
+// Será que assim como o typescript que é transcrito 
+// para JS, o Kotlin é transcrito para Java ou swift?
+fun main() {
+	// val é um valor constante     
+    val pi = 3.1415
+    
+    // var é variable, um valor qual pode variar
+    var r = 10
+}
