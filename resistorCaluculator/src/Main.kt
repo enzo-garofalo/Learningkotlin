@@ -1,33 +1,19 @@
 import kotlin.math.pow
 
-// pesquisar o que é uma data class
+// Data class para representar um resistor
 data class Resistor(
-    val colorList : mutableListOf<String>()
-    val value: mutableListOf<double>()
-    val multiplier : Double
+    val colorList: List<String>,
+    val firstColor: Double,
+    val secondColor: Double,
+    val multiplier: Double,
     val tolerance: Double?
-){
-    fun getResultFourBands() : Double
-    {
-        //  Todo: make specific math
-        return rfirstColor.value * 10.0 + secondColor.value) * multiplier.multiplier
-    }
-
-    fun getResultFiveBands() : Double
-    {
-        return 0.0
-    }
-
-    fun getResultSixBands() : Double
-    {
-        return 0.0
+) {
+    fun getResultFourBands(): Double {
+        return (firstColor * 10 + secondColor) * multiplier
     }
 }
 
-
-
-fun main()
-{
+fun main() {
     val colorsValuesMap: HashMap<String, List<Double?>> = hashMapOf(
         "black"  to listOf(0.0, 1.0, null),
         "brown"  to listOf(1.0, 10.0, 1.0),
@@ -43,12 +29,10 @@ fun main()
         "silver" to listOf(null, 0.01, 10.0),
     )
 
+    println("How many bands do you see?")
+    val bandsNum = readln().toInt()
+    val usersColorsList = mutableListOf<String>()
 
-    println("How many bands do you See?")
-    var bandsNum: Int = readln().toInt()
-    var counter : Int = 0
-
-    var usersColorsList =  mutableListOf<String>();
     while (counter < bandsNum)
     {
         println("Type the color ${counter+1}: ")
@@ -58,21 +42,22 @@ fun main()
         counter++
     }
 
+    switch (bandsNum)
+    if (bandsNum == 4) {
+        val firstColor = colorsValuesMap[usersColorsList[0]]?.get(0)
+        val secondColor = colorsValuesMap[usersColorsList[1]]?.get(0)
+        val multiplier = colorsValuesMap[usersColorsList[2]]?.get(1)
+        val tolerance = colorsValuesMap[usersColorsList[3]]?.get(2)
 
-    var result : Double = 0.0
-    if(bandsNum == 4)
-    {
-        val firstColor = colorsValuesMap[usersColorsList[0]]!!
-        val secondColor = colorsValuesMap[usersColorsList[1]]!!
-        val multiplier = colorsValuesMap[usersColorsList[2]]!!
-        val tolerance =  colorsValuesMap[usersColorsList[3]]!!
-        val resistor =
-            Resistor(usersColorsList, firstColor, secondColor, multiplier, tolerance)
+        if (firstColor != null && secondColor != null && multiplier != null) {
+            val resistor = Resistor(usersColorsList, firstColor, secondColor, multiplier, tolerance)
+            val result = resistor.getResultFourBands()
 
-        result = (firstColor.value * 10.0 + secondColor.value) * multiplier.multiplier
+            println("The resistor value is: $result ohms ±${tolerance ?: "unknown"}%")
+        } else {
+            println("Invalid color input. Please try again.")
+        }
+    } else {
+        println("Currently, only 4-band resistors are supported.")
     }
-
-    // Exibe o resultado
-    println("The resistor value is: $result ohms")
-
 }
