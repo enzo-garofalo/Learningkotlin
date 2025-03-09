@@ -1,48 +1,8 @@
-class Colors
-{
-    val name: String
-    val digit: Int?
-    val multiplier: Double
-    val tolerance: Double?
-
-    constructor(name: String, digit: Int?, multiplier: Double, tolerance: Double?) {
-        this.name = name
-        this.digit = digit
-        this.multiplier = multiplier
-        this.tolerance = tolerance
-    }
-}
-
-abstract class Resistor
-{
-    val bandsNum: Int
-
-    constructor(bandsNum: Int) {
-        this.bandsNum = bandsNum
-    }
-
-    abstract fun calculateResistance(): Double
-}
-
-class FourBandsResistor : Resistor
-{
-    val firstBand: Colors
-    val secondBand: Colors
-    val multiplier: Colors
-    val tolerance: Colors
-
-    constructor(firstBand: Colors, secondBand: Colors, multiplier: Colors, tolerance: Colors) : super(4) {
-        this.firstBand = firstBand
-        this.secondBand = secondBand
-        this.multiplier = multiplier
-        this.tolerance = tolerance
-    }
-
-    override fun calculateResistance(): Double {
-        return (firstBand.digit!! * 10 + secondBand.digit!!) * multiplier.multiplier
-    }
-
-}
+import resistors.Colors
+import resistors.Resistor
+import resistors.FourBandsResistor
+import resistors.FiveBandsResistor
+import resistors.SixBandsResistor
 
 fun setResistorColors(bandsNum: Int) : MutableList<Colors>
 {
@@ -107,16 +67,22 @@ fun setResistor(bandsNum: Int, colors: MutableList<Colors>) : Resistor
             val (firstColor, secondColor, thirdColor, fourthColor) = colors
             FourBandsResistor(firstColor, secondColor, thirdColor, fourthColor)
         }
-//        5 -> {
-//            // Assuming 5-band resistor (first color, second color, third color, multiplier, tolerance)
-//            val (firstColor, secondColor, thirdColor, multiplierColor, toleranceColor) = colors
-//            FiveBandsResistor(firstColor, secondColor, thirdColor, multiplierColor, toleranceColor)
-//        }
-//        6 -> {
-//            // Assuming 6-band resistor (first color, second color, third color, fourth color, multiplier, tolerance)
-//            val (firstColor, secondColor, thirdColor, fourthColor, multiplierColor, toleranceColor) = colors
-//            SixBandsResistor(firstColor, secondColor, thirdColor, fourthColor, multiplierColor, toleranceColor)
-//        }
+        5 -> {
+            // Assuming 5-band resistor (first color, second color, third color, multiplier, tolerance)
+            val (firstColor, secondColor, thirdColor, multiplierColor, toleranceColor) = colors
+            FiveBandsResistor(firstColor, secondColor, thirdColor, multiplierColor, toleranceColor)
+        }
+        6 -> {
+            // Assuming 6-band resistor (first color, second color, third color, fourth color, multiplier, tolerance)
+            val firstColor = colors[0]
+            val secondColor = colors[1]
+            val thirdColor = colors[2]
+            val fourthColor = colors[3]
+            val multiplierColor = colors[4]
+            val toleranceColor = colors[5]
+
+            SixBandsResistor(firstColor, secondColor, thirdColor, fourthColor, multiplierColor, toleranceColor)
+        }
         else -> throw IllegalArgumentException("Invalid number of bands. Only 4, 5, or 6 are allowed.")
     }
 
