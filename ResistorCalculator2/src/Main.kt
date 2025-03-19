@@ -38,7 +38,6 @@ fun setBandsNum() : Int
 
     while (true)
     {
-
         println("How many bands do you see? (4, 5, or 6)")
         bandsNum  = readln().lowercase().toInt()
 
