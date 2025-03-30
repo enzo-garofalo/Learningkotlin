@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203165515444",
+    "project_id": "imcfirebase-d0ef6",
+    "storage_bucket": "imcfirebase-d0ef6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203165515444:android:3444e6bd68482fc8a7e1e1",
+        "android_client_info": {
+          "package_name": "com.time2.imcfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcImBFXmHJxAvjQaOuxVGd_TzjJv1gJtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
