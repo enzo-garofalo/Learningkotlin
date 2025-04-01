@@ -3,6 +3,7 @@ package com.time2.imcfirebase
 import android.R.attr.onClick
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +27,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.firestore
 import com.time2.imcfirebase.ui.theme.IMCfirebaseTheme
 
@@ -79,6 +83,11 @@ fun IMCView(modifier: Modifier = Modifier) {
             label = { Text("Weight") },
             textStyle = TextStyle(color = Color.Blue)
         )
+        Button(
+            onClick = {
+                authenticateUser("enzo.garofalo07@gmail.com", "123456qwerty")
+            }
+        ) { Text("Log In") }
 
         Button(
             onClick = {
@@ -132,6 +141,14 @@ fun saveData(name : String, height : Double, weight : Double)
 
 fun getIMC(height : Double, weight : Double) : Double = weight / (height*height);
 
+fun authenticateUser(name: String, password: String)
+{
+   val auth : FirebaseAuth = Firebase.auth
+    auth.signInWithEmailAndPassword(name, password)
+        .addOnSuccessListener { Log.w("Log In", "Success on LogIn") }
+        .addOnFailureListener { e -> Log.w("Log In", "Failed on LogIn") }
+
+}
 
 
 @Preview(showBackground = true)
