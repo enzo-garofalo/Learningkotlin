@@ -83,11 +83,18 @@ fun IMCView(modifier: Modifier = Modifier) {
             label = { Text("Weight") },
             textStyle = TextStyle(color = Color.Blue)
         )
+
         Button(
             onClick = {
                 authenticateUser("enzo.garofalo07@gmail.com", "123456qwerty")
             }
         ) { Text("Log In") }
+
+        Button(
+            onClick = {
+                createUser("enzobugrino@gmail.com", "123456qwerty")
+            }
+        ) { Text("Sign Up") }
 
         Button(
             onClick = {
@@ -150,6 +157,13 @@ fun authenticateUser(name: String, password: String)
 
 }
 
+fun createUser(name: String, password: String)
+{
+    val auth : FirebaseAuth = Firebase.auth
+    auth.createUserWithEmailAndPassword(name, password)
+        .addOnSuccessListener { Log.w("Sign Up", "Success on SignUp") }
+        .addOnFailureListener { e -> Log.w("Sign Up", "Failed on SignUp") }
+}
 
 @Preview(showBackground = true)
 @Composable
