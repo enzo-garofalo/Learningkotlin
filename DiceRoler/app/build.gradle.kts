@@ -40,7 +40,8 @@ android {
 }
 
 dependencies {
-
+//    implementation 'androidx.appcompat:appcompat:1.3.1'  // or a newer version
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'  // if you are using constraint layouts
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -49,6 +50,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
