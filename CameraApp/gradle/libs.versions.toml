@@ -1,0 +1,43 @@
+[versions]
+agp = "8.8.0"
+kotlin = "1.9.24"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+camerax = "1.5.0-alpha06"
+accompanist = "0.37.2"
+uiAndroid = "1.8.0"
+material3Android = "1.3.2"
+activityCompose = "1.10.1"
+uiToolingPreviewAndroid = "1.8.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camerax", name = "camera-core" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax", name = "camera-camera2" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax", name = "camera-lifecycle" }
+androidx-camera-compose = { module = "androidx.camera:camera-compose", version.ref = "camerax", name = "camera-compose" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camerax", name = "camera-view" }
+androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "camerax", name = "camera-extensions" }
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions",name ="accompanist-spermissions", version.ref ="accompanist" }
+androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroid" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+
+
