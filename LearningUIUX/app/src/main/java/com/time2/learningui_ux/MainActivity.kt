@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.time2.learningui_ux.components.buildBottomBar
 import com.time2.learningui_ux.components.buildBottomModal
+import com.time2.learningui_ux.components.buildTopAppBar
 import com.time2.learningui_ux.components.buildFloatingActionButton
 import com.time2.learningui_ux.ui.theme.LearningUIUXTheme
 
@@ -36,13 +37,20 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(
                     topBar = {
-                        TopAppBar(title = { Text("Meu App") })
+                        buildTopAppBar(
+                            userName = "JoãoGabriel",
+                            showBackClick =  true,
+                            onBackClick   =  { /*TODO*/},
+                            onLogoutClick =  { /*TODO*/},
+                        )
                     },
                     bottomBar = {
                         buildBottomBar()
                     },
                     floatingActionButton = {
-                        buildFloatingActionButton(onClick = { showModal = true })
+                        buildFloatingActionButton(
+                            onClick = { showModal = true }
+                        )
                     }
                 ) { innerPadding ->
                     Box(Modifier.padding(innerPadding)) {
@@ -56,12 +64,11 @@ class MainActivity : ComponentActivity() {
                             sheetState = sheetState
                         )
                     }
-                } // fecha o Scaffold
-
-            } // fecha o LearningUIUXTheme
-        } // fecha o setContent
-    } // fecha o onCreate
-} // fecha a MainActivity
+                }
+            }
+        }
+    }
+}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
