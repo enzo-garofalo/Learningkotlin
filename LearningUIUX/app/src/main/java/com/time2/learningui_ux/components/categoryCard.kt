@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -49,6 +50,28 @@ fun getCategoryIcon(iconName: String): Painter {
     }
 }
 
+@Composable
+fun createIcon(
+    iconName: String,
+    iconTitle: String
+){
+    // Bolinha de fundo do icone
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .size(48.dp)
+            .clip(CircleShape)
+            .background(MaterialTheme.colorScheme.primary)
+    ) {
+        Icon(
+            painter = getCategoryIcon(iconName),
+            contentDescription = iconTitle,
+            tint = Color.White,
+            modifier = Modifier.size(24.dp)
+        )
+    }
+}
+
 
 
 @Composable
@@ -64,35 +87,18 @@ fun buildCategoryCases(
         itemsIndexed(categoryList) {index, item ->
             Box(
                 modifier = Modifier
+                    .shadow(elevation = 1.dp, shape = RoundedCornerShape(12.dp))
                     .clip(RoundedCornerShape(12.dp))
-                    .background(Color.Transparent)
+                    .background(Color.White)
                     .clickable { item.searchFor() }
-                    .border(width = 0.2.dp, color = Color.LightGray, shape = RoundedCornerShape(16.dp))
                     .padding(12.dp)
             ){
                 // Mini Card
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .padding(vertical = 4.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(Color.Transparent)
                 ) {
-                    // Bolinha de fundo do icone
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .size(48.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primary)
-                    ) {
-                        Icon(
-                            painter = getCategoryIcon(item.iconName),
-                            contentDescription = item.title,
-                            tint = Color.White,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
+
+                    createIcon(item.iconName, item.title)
 
                     Spacer(modifier = Modifier.height(4.dp))
 

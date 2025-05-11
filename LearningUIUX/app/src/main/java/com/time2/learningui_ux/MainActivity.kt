@@ -27,7 +27,9 @@ import com.time2.learningui_ux.components.buildBottomModal
 import com.time2.learningui_ux.components.buildCategoryHeader
 import com.time2.learningui_ux.components.buildTopAppBar
 import com.time2.learningui_ux.components.buildFloatingActionButton
+import com.time2.learningui_ux.components.buildPasswordManager
 import com.time2.learningui_ux.components.showCategoryElements
+import com.time2.learningui_ux.components.showPasswordList
 import com.time2.learningui_ux.ui.theme.LearningUIUXTheme
 
 class MainActivity : ComponentActivity() {
@@ -66,6 +68,13 @@ class MainActivity : ComponentActivity() {
                         )
 
                         showCategoryElements()
+
+                        buildPasswordManager(
+                            onAllFilterClick = {/*TODO*/},
+                            onRecentClick    = {/*TODO*/}
+                        )
+
+                        showPasswordList()
                     }
 
                     if (showModal) {

@@ -46,9 +46,9 @@ fun buildCategoryHeader(
             onClick = onSettingsClick
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_preference), // Your purple gear SVG
+                painter = painterResource(id = R.drawable.ic_preference),
                 contentDescription = "Configurações de categoria",
-                tint = Color(0xFF4B00E0) // Purple
+                tint = MaterialTheme.colorScheme.primary // Purple
             )
         }
     }
