@@ -22,14 +22,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import com.time2.learningui_ux.GreetingPreview
+import com.time2.learningui_ux.R
 
 
 data class BottonNavigationItem(
     var title: String,
-    var selectedIcon: ImageVector,
-    var unselectedIcon: ImageVector,
+    var icon: Painter,
     val hasNews: Boolean,
     val badgeCount: Int? = null
 )
@@ -61,11 +63,11 @@ fun bottomNavBar(
                                 }
                             }
                         ) {
-                            val icon = if (index == selectedIndex) item.selectedIcon else item.unselectedIcon
+                            val icon = item.icon
                             val iconTint = if (index == selectedIndex) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
                             Icon(
-                                imageVector = icon,
+                                painter = icon,
                                 contentDescription = item.title,
                                 tint = iconTint
                             )
@@ -80,9 +82,9 @@ fun bottomNavBar(
 fun buildBottomBar()
 {
     val items = listOf(
-        BottonNavigationItem("Home", Icons.Filled.Home, Icons.Outlined.Home, false, null),
-        BottonNavigationItem("Senhas", Icons.Filled.Lock, Icons.Outlined.Lock, false, 25),
-        BottonNavigationItem("Configurações", Icons.Filled.Settings, Icons.Outlined.Settings, true, null)
+        BottonNavigationItem("Home", painterResource(id = R.drawable.ic_home), false, null),
+        BottonNavigationItem("Senhas", painterResource(id = R.drawable.ic_shield), false, 25),
+        BottonNavigationItem("Configurações", painterResource(id = R.drawable.ic_settings), true, null)
     )
     var selectedItemIndex by rememberSaveable { mutableStateOf( 0 ) }
 
